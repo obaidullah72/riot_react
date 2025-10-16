@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ---- Theme tokens (navy glass + gradient accents) ---- */
+@theme {
+  --color-bg-1: #0a0e17;
+  --color-bg-2: #0f1421;
+
+  --color-amber-500: #f59e0b;
+  --color-pink-500:  #ec4899;
+  --color-purple-500:#8b5cf6;
+
+  --radius-card: 16px;
+}
+
+/* page background */
+body {
+  background:
+    radial-gradient(55rem 55rem at -10% -20%, rgba(59,130,246,.18) 10%, transparent 40%),
+    radial-gradient(60rem 60rem at 110% -10%, rgba(139,92,246,.14) 10%, transparent 40%),
+    linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 100%);
+  background-attachment: fixed;
+  color: rgb(241 245 249);
+}
+
+/* helpers */
+.container-app { max-width: 1120px; }
+
+/* glass */
+.glass {
+  background: rgba(16, 21, 35, .72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+.glass-card {
+  background: rgba(16, 21, 35, .60);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  border-radius: var(--radius-card);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  border-color: rgba(255,255,255,.12);
+}
+
+/* brand gradient text */
+.brand {
+  background: linear-gradient(90deg, var(--color-amber-500) 0%, var(--color-pink-500) 50%, var(--color-purple-500) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* gradient button */
+.btn-grad {
+  background: linear-gradient(90deg, var(--color-amber-500) 0%, var(--color-pink-500) 50%, var(--color-purple-500) 100%);
+}
+
+/* floating label pattern */
+.float-wrap { position: relative; }
+.float-wrap input, .float-wrap select {
+  padding-top: 1.4rem; padding-bottom: .7rem;
+}
+.float-wrap label {
+  position: absolute; top: .55rem; left: .9rem;
+  font-size: .72rem; color: rgb(148 163 184);
+  pointer-events: none; transition: all .15s ease;
+}
+
+/* subtle pulse */
+.pulse { animation: pulseBorder 2s infinite; }
+@keyframes pulseBorder {
+  0% { box-shadow: 0 0 0 0 rgba(245,158,11,.35); }
+  70% { box-shadow: 0 0 0 10px rgba(245,158,11,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+}
